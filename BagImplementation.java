@@ -1,52 +1,41 @@
 package Bag;  // Defines the package name as 'Bag'.
 
 // Declares a public class named BagImplementation.
-public class BagImplementation {  
+public class BagImplementation {
 
     // Main method which serves as the entry point for any Java application.
-    public static void main(String[] args) {  
+    public static void main(String[] args) {
 
-        // Create a Bag instance for storing Strings.
-        Bag<String> pcComponents = new Bag<>();
+        // Create two instances of the Bag class.
+        Bag<String> bag1 = new Bag<>();  // First bag instance.
+        Bag<String> bag2 = new Bag<>();  // Second bag instance.
 
-        // Add PC components to the bag, some of which are duplicates.
-        pcComponents.add("Tower");  // Add "Tower" to the bag.
-        pcComponents.add("Motherboard");  // Add "Motherboard" to the bag.
-        pcComponents.add("NIC");  // Add "NIC" (Network Interface Card) to the bag.
-        pcComponents.add("CPU");  // Add "CPU" (Central Processing Unit) to the bag.
-        pcComponents.add("GPU");  // Add "GPU" (Graphics Processing Unit) to the bag.
-        pcComponents.add("RAM");  // Add "RAM" (Random Access Memory) to the bag.
-        pcComponents.add("RAM");  // Add another "RAM" to the bag, illustrating duplicate handling.
-        pcComponents.add("SSD");  // Add "SSD" (Solid State Drive) to the bag.
-        pcComponents.add("SSD");  // Add another "SSD" to the bag, illustrating duplicate handling.
-        pcComponents.add("Fan");  // Add a "Fan" to the bag.
-        pcComponents.add("Fan");  // Add another "Fan" to the bag.
-        pcComponents.add("Fan");  // Add another "Fan" to the bag.
-        pcComponents.add("Fan");  // Add another "Fan" to the bag.
-        pcComponents.add("Fan");  // Add another "Fan" to the bag, illustrating handling of multiple duplicates.
+        // Add elements to each bag, including duplicates.
+        bag1.add("CPU");
+        bag1.add("RAM");
+        bag1.add("RAM");
+        bag1.add("GPU");
 
-        // Print the contents of the bag
-        System.out.println("PC Components: " + pcComponents);
+        bag2.add("GPU");
+        bag2.add("GPU");
+        bag2.add("HDD");
+        bag2.add("SSD");
+        bag2.add("SSD");
 
-        // Check and print if specific components are present
-        System.out.println("Contains 'GPU': " + pcComponents.contains("GPU"));  // Check presence of "GPU".
-        System.out.println("Contains 'SSD': " + pcComponents.contains("SSD"));  // Check presence of "SSD".
-        System.out.println("Contains 'NIC': " + pcComponents.contains("NIC"));  // Check presence of "NIC".
+        // Print the size of each bag using the size method.
+        System.out.println("Size of bag1: " + bag1.size());
+        System.out.println("Size of bag2: " + bag2.size());
 
-        // Check and print the number of components in the bag.
-        System.out.println("Count of 'Solid State Drives': " + pcComponents.count("SSD"));  // Print count of "SSD".
-        System.out.println("Count of 'Fans': " + pcComponents.count("Fan"));  // Print count of "Fan".
+        // Merge the two bags together using the merge method.
+        bag1.merge(bag2);
 
-        // Remove one instance of "NIC" from the bag.
-        pcComponents.remove("NIC");
+        // Print the merged bag contents.
+        System.out.println("Merged bag contents: " + bag1);
 
-        // Print the contents of the bag after removing one instance of "NIC".
-        System.out.println("Bag contents after removing the NIC: " + pcComponents);
+        // Create a new bag containing only the distinct elements using the distinct method.
+        Bag<String> distinctBag = bag1.distinct();
 
-        // Check and print if "NIC" is still present in the bag after removal.
-        System.out.println("Contains NIC after removal: " + pcComponents.contains("NIC"));  // Check presence of "NIC" after removal.
-
-        // Check and print the count of "NIC" in the bag after its removal.
-        System.out.println("Count of NICs after removal: " + pcComponents.count("NIC"));  // Print count of "NIC" after removal.
+        // Print the distinct bag contents.
+        System.out.println("Distinct bag contents: " + distinctBag);
     }
 }
